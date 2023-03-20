@@ -1,12 +1,12 @@
 from datasets import Dataset, Audio, concatenate_datasets
 
 audio_dataset1 = Dataset.from_dict({"audio": ["./samples/1/1_0.wav", "./samples/1/1_1.wav", "./samples/1/1_2.wav"]}).cast_column("audio", Audio())
-audio_dataset1 = audio_dataset1.add_column("labels", [1] * len(audio_dataset1))
+audio_dataset1 = audio_dataset1.add_column("labels", [[1]] * len(audio_dataset1))
 print (audio_dataset1)
 print (audio_dataset1[0])
 print (audio_dataset1['labels'])
 audio_dataset2 = Dataset.from_dict({"audio": ["./samples/2/2_0.wav", "./samples/2/2_1.wav", "./samples/2/2_2.wav"]}).cast_column("audio", Audio())
-audio_dataset2 = audio_dataset2.add_column("labels", [2] * len(audio_dataset2))
+audio_dataset2 = audio_dataset2.add_column("labels", [[2]] * len(audio_dataset2))
 audio_dataset = concatenate_datasets([audio_dataset1, audio_dataset2])
 print (audio_dataset['labels'])
 
