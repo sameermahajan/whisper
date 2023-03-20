@@ -92,7 +92,7 @@ def compute_metrics(pred):
 
 from transformers import WhisperForConditionalGeneration
 
-model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-small")
+model = WhisperForConditionalGeneration.from_pretrained("openai/whisper-tiny")
 
 model.config.forced_decoder_ids = None
 model.config.suppress_tokens = []
