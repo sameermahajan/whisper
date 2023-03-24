@@ -12,6 +12,6 @@ pipe = pipeline(
 )
 
 for i in range(50):
-    audio = './samples/1_' + str(i) + '.wav'
-    out = pipe(audio)
-    print (out)
+    audio_file = './samples/1_' + str(i) + '.wav'
+    out = pipe(audio_file)
+    print (audio_file, out)
