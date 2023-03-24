@@ -1,14 +1,21 @@
 from datasets import Dataset, Audio, concatenate_datasets
 
-audio_dataset1 = Dataset.from_dict({"audio": ["./samples/1/1_0.wav", "./samples/1/1_1.wav", "./samples/1/1_2.wav"]}).cast_column("audio", Audio())
-audio_dataset1 = audio_dataset1.add_column("labels", [[1]] * len(audio_dataset1))
-print (audio_dataset1)
-print (audio_dataset1[0])
-print (audio_dataset1['labels'])
-audio_dataset2 = Dataset.from_dict({"audio": ["./samples/2/2_0.wav", "./samples/2/2_1.wav", "./samples/2/2_2.wav"]}).cast_column("audio", Audio())
-audio_dataset2 = audio_dataset2.add_column("labels", [[2]] * len(audio_dataset2))
-audio_dataset = concatenate_datasets([audio_dataset1, audio_dataset2])
-print (audio_dataset['labels'])
+fnames = []
+for i in range (50):
+     fnames.append("./samples/" + str(1) + "/" + str(1) + "_" + str(i) + ".wav")
+fnames.append("./samples/" + str(1) + "/" + str(1) + "_50.wav")
+print (fnames)
+audio_dataset = Dataset.from_dict({"audio": fnames }).cast_column("audio", Audio())
+audio_dataset = audio_dataset.add_column("labels", [[1]] * len(audio_dataset))
+
+for number in range(2,3,1):
+    fnames = []
+    for i in range (50):
+        fnames.append("./samples/" + str(number) + "/" + str(number) + "_" + str(number) + ".wav")
+    fnames.append("./samples/" + str(number) + "/" + str(number) + "_50.wav")
+    ds = Dataset.from_dict({"audio": fnames }).cast_column("audio", Audio())
+    ds = ds.add_column("labels", [[number]] * len(ds))
+    audio_dataset = concatenate_datasets([audio_dataset, ds])
 
 from transformers import WhisperFeatureExtractor
 
