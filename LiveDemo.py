@@ -17,7 +17,7 @@ iface = gr.Interface(
     inputs=gr.Audio(source="microphone", type="filepath"), 
     outputs="text",
     title="Whisper Small Hindi",
-    description="Realtime demo for Hindi speech recognition using a fine-tuned Whisper small model.",
+    description="Realtime demo for Marathi speech recognition of numbers 1 through 20 using a fine-tuned Whisper small model.",
 )
 
 iface.launch()
