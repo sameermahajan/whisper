@@ -14,5 +14,6 @@ pipe = pipeline(
 for number in range(1,21,1):
     for i in range(50):
         audio_file = './samples/' + str(number) + '/' + str(number) + '_' + str(i) + '.wav'
-        out = pipe(audio_file)
-        print (audio_file, out)
+        if os.path.isfile(audio_file):
+            out = pipe(audio_file)
+            print (audio_file, out)
